@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
  
-	<context:component-scan base-package="com.exstoph" />
+	<context:component-scan base-package="com.redefine" />
  	<mvc:annotation-driven/>
  	<aop:aspectj-autoproxy/>
  	

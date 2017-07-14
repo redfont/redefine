@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+	
+	<context:component-scan base-package="com.exstoph"/>
+	<context:property-placeholder location="classpath:system-test.properties"/>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages</value>
+		</property>
+	</bean>
+	
+	<bean id="x2dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="${db.url}"/>
+		<property name="username" value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
+	</bean>
+	
+	<bean name="hibernateJpaAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="database" value="MYSQL" />
+        <property name="showSql" value="true" />
+        <property name="generateDdl" value="false" />
+        <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+    </bean>
+    
+	<bean id="x2emf"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="rdfine" />
+        <property name="dataSource" ref="x2dataSource" />
+        <property name="jpaVendorAdapter" ref="hibernateJpaAdapter" />
+    </bean>
+    
+	 <bean id="x2transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="x2emf" />
+    </bean>
+	
+	<tx:annotation-driven transaction-manager="x2transactionManager" proxy-target-class="true"/>
+</beans>

@@ -1,0 +1,49 @@
+<style type="text/css">
+	._md-toolbar-transitions {
+		min-height: 40px !important;
+	}
+	.md-toolbar-tools {
+		height: 40px !important;
+	}
+</style>
+<md-dialog aria-label="user">
+	<form ng-cloak>
+		<md-toolbar>
+	      <div class="md-toolbar-tools">
+	        <h2>User</h2>
+	        <span flex></span>
+	        <md-button class="md-icon-button" ng-click="hide()">
+	          <!-- <md-icon md-svg-src="resources/images/icons/ic_clear_black_24px.svg" aria-label="Close dialog"></md-icon> -->
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
+	    </md-toolbar>
+		<md-dialog-content >
+			<div class="md-dialog-content">
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td><input type="text" ng-model="user.username" ng-readonly="readOnly"/></td>
+						<td>Email:</td>
+						<td><input type="text" ng-model="user.emailAddress"/></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="password" ng-model="user.password"/></td>
+						<td>Status:</td>
+						<td>
+							<select ng-model="user.active" ng-options="option.value as option.label for option in options"></select>
+						</td>
+					</tr>
+					<tr>
+						
+					</tr>
+				</table>
+			</div>
+		</md-dialog-content>
+		
+		<md-dialog-actions layout="row">
+			<md-button class="md-button md-raised md-primary" ng-click="submit()">Submit</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
