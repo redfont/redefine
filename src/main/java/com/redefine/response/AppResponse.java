@@ -11,7 +11,7 @@ public class AppResponse {
 	public Object dataObject;
 	
 	public AppResponse() {
-		
+		isSuccess = Boolean.FALSE;
 	}
 	
 	public AppResponse(List<?> data, List<String> messages, Boolean isSuccess, Object dataObject) {

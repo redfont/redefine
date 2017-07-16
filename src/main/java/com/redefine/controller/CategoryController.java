@@ -23,12 +23,11 @@ public class CategoryController {
 	@ResponseBody
 	public AppResponse addCategory(@RequestBody Category category) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try{
 			categoryService.addCategory(category);
+			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
-			response.setIsSuccess(Boolean.FALSE);
 			response.getMessages().add(e.getMessage());
 		}
 		return response;
@@ -38,13 +37,11 @@ public class CategoryController {
 	@ResponseBody
 	public AppResponse getCategories() {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
-		
 		try{
 			response.setData(categoryService.getCategories());
+			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e) {
 			e.printStackTrace();
-			response.setIsSuccess(Boolean.FALSE);
 			response.getMessages().add(e.getMessage());
 		}
 		
@@ -55,12 +52,11 @@ public class CategoryController {
 	@ResponseBody
 	public AppResponse getCategory(@PathVariable("code")String code) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try{
 			response.setDataObject(categoryService.getCategory(code));
+			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
-			response.setIsSuccess(Boolean.FALSE);
 			response.getMessages().add(e.getMessage());
 		}
 		
@@ -71,12 +67,11 @@ public class CategoryController {
 	@ResponseBody
 	public AppResponse updateCategory(@RequestBody Category category) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try{
 			categoryService.updateCategory(category);
+			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
-			response.setIsSuccess(Boolean.FALSE);
 			response.getMessages().add(e.getMessage());
 		}
 		return response;

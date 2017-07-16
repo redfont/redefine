@@ -10,4 +10,5 @@ public interface UserDao {
 	public List<User> getUsers() throws Exception;
 	public User getUser(int id) throws Exception;
 	public void updateUser(User user) throws Exception;
+	public User getUserByUsername(String username) throws Exception;
 }

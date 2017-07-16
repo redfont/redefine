@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,6 +44,9 @@ public class Person implements Serializable {
 	@Column(name="birth_date")
 	private Date birthDate;
 	
+	@Column(name="is_prospect")
+	private Boolean isProspect;
+	
 	@Column(name="date_created")
 	private Date dateCreated;
 	
@@ -55,7 +59,7 @@ public class Person implements Serializable {
 	@Column(name="updated_by")
 	private String updatedBy;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="person_id", referencedColumnName="person_id")
 	private List<Address> addresses;
 	

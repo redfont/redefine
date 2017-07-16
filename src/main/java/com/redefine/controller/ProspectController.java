@@ -8,26 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.redefine.model.ExpenseType;
+import com.redefine.model.Person;
 import com.redefine.response.AppResponse;
-import com.redefine.service.ExpenseTypeService;
+import com.redefine.service.ProspectService;
 
 @Controller
-@RequestMapping(value="expenseType")
-public class ExpenseTypeController {
+@RequestMapping(value="prospect")
+public class ProspectController {
 
 	@Autowired
-	private ExpenseTypeService expenseTypeService;
-	
-	public ExpenseTypeController(){}
+	private ProspectService prospectService;
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, produces="application/json")
 	@ResponseBody
-	public AppResponse addExpenseType(@RequestBody ExpenseType expenseType){
-		AppResponse response = new AppResponse();
+	public AppResponse addProspect(@RequestBody Person person ) {
 		
+		AppResponse response = new AppResponse();
 		try{
-			expenseTypeService.addExpenseType(expenseType);
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -36,12 +33,12 @@ public class ExpenseTypeController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getExpenseTypes", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/getProspects", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
-	public AppResponse getExpenseTypes(){
+	public AppResponse getProspects(){
 		AppResponse response = new AppResponse();
 		try{
-			response.setData(expenseTypeService.getExpenseTypes());
+			response.setData(prospectService.getProspects());
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -50,12 +47,12 @@ public class ExpenseTypeController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getExpenseType/{code}", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/getProspect", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
-	public AppResponse getExpenseType(@PathVariable("code") String code){
+	public AppResponse getProspect(@PathVariable("id") int id){
 		AppResponse response = new AppResponse();
 		try{
-			response.setDataObject(expenseTypeService.getExpenseType(code));
+			response.setDataObject(prospectService.getProspect(id));
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -66,10 +63,10 @@ public class ExpenseTypeController {
 	
 	@RequestMapping(value="/update", method=RequestMethod.POST, produces="application/json")
 	@ResponseBody
-	public AppResponse updateExpenseType(@RequestBody ExpenseType expenseType){
+	public AppResponse updateProspect(@RequestBody Person person){
 		AppResponse response = new AppResponse();
 		try{
-			expenseTypeService.updateExpenseType(expenseType);
+			prospectService.updateProspect(person);
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();

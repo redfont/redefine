@@ -23,11 +23,10 @@ public class ContactTypeController {
 	@ResponseBody
 	public AppResponse addContactType(@RequestBody ContactType contactType) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try{
 			contactTypeService.addContactType(contactType);
+			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
-			response.setIsSuccess(Boolean.FALSE);
 			response.getMessages().add(e.getMessage());
 		}
 		return response;
@@ -37,11 +36,10 @@ public class ContactTypeController {
 	@ResponseBody
 	public AppResponse getContactTypes() {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try{
 			response.setData(contactTypeService.getContactTypes());
+			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
-			response.setIsSuccess(Boolean.FALSE);
 			response.getMessages().add(e.getMessage());
 		}
 		return response;
@@ -51,11 +49,10 @@ public class ContactTypeController {
 	@ResponseBody
 	public AppResponse getContactType(@PathVariable("code") String code) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try{
 			response.setDataObject(contactTypeService.getContactType(code));
+			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
-			response.setIsSuccess(Boolean.FALSE);
 			response.getMessages().add(e.getMessage());
 		}
 		return response;
@@ -65,11 +62,10 @@ public class ContactTypeController {
 	@ResponseBody
 	public AppResponse updateContactType(@RequestBody ContactType contactType) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try{
 			contactTypeService.updateContactType(contactType);
+			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
-			response.setIsSuccess(Boolean.FALSE);
 			response.getMessages().add(e.getMessage());
 		}
 		return response;

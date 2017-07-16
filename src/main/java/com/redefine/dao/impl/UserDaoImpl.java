@@ -46,4 +46,10 @@ public class UserDaoImpl implements UserDao {
 		em.merge(user);
 	}
 
+	@Override
+	public User getUserByUsername(String username) throws Exception {
+		Query query = em.createQuery("select u from User u where u.username = :UNAME", User.class);
+		query.setParameter("UNAME", username);
+		return (User) query.getSingleResult();
+	}
 }

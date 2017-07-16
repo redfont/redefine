@@ -27,12 +27,11 @@ public class UserController {
 	@ResponseBody
 	public AppResponse addUser(@RequestBody User user) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try {
 			userService.addUser(user);
+			response.setIsSuccess(Boolean.TRUE);
 		} catch (Exception e) {
 			response.getMessages().add(e.getMessage());
-			response.setIsSuccess(Boolean.FALSE);
 		}
 		return response;
 	}
@@ -41,14 +40,12 @@ public class UserController {
 	@ResponseBody
 	public AppResponse getUsers() {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
-		
 		try {
 			response.setData(userService.getUsers());
+			response.setIsSuccess(Boolean.TRUE);
 		} catch(Exception e) {
 			e.printStackTrace();
 			response.getMessages().add(e.getMessage());
-			response.setIsSuccess(Boolean.FALSE);
 		}
 		return response;
 	}
@@ -57,14 +54,13 @@ public class UserController {
 	@ResponseBody
 	public AppResponse getUser(@PathVariable("id") Integer id) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		
 		try {
 			response.setDataObject(userService.getUser(id));
+			response.setIsSuccess(Boolean.TRUE);
 		} catch(Exception e) {
 			e.printStackTrace();
 			response.getMessages().add(e.getMessage());
-			response.setIsSuccess(Boolean.FALSE);
 		}
 		return response;
 	}
@@ -73,12 +69,11 @@ public class UserController {
 	@ResponseBody
 	public AppResponse updateUser(@RequestBody User user) {
 		AppResponse response = new AppResponse();
-		response.setIsSuccess(Boolean.TRUE);
 		try {
 			userService.updateUser(user);
+			response.setIsSuccess(Boolean.TRUE);
 		} catch (Exception e) {
 			response.getMessages().add(e.getMessage());
-			response.setIsSuccess(Boolean.FALSE);
 		}
 		return response;
 	}
