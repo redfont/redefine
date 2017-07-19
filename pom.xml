@@ -7,7 +7,7 @@
   <properties>
   	<spring.version>4.2.0.RELEASE</spring.version>
 	<jstl.version>1.2</jstl.version>
-	<jackson.version>2.6.3</jackson.version>
+	<jackson.version>2.6.7</jackson.version>
 	<aop.version>1.7.3</aop.version>
 	<cglib.version>2.2</cglib.version>
 	<mysql.version>5.1.9</mysql.version>
@@ -93,7 +93,6 @@
 		<artifactId>modelmapper-spring</artifactId>
 		<version>${model.mapper.version}</version>
 	</dependency> -->
-	
 	<!-- mysql -->
 	<dependency>
 		<groupId>mysql</groupId>
@@ -113,6 +112,11 @@
 		<version>${jstl.version}</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
 	<dependency>
 		<groupId>com.fasterxml.jackson.core</groupId>
 		<artifactId>jackson-databind</artifactId>

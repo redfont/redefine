@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Table(name="addresses")
 @Entity
@@ -52,9 +54,11 @@ public class Address implements Serializable {
 	private String updatedBy;
 	
 	@Column(name="date_created")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
 	
 	@Column(name="date_updated")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateUpdated;
 	
 	public Address(){}

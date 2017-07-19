@@ -19,12 +19,15 @@ public class ProspectController {
 	@Autowired
 	private ProspectService prospectService;
 	
-	@RequestMapping(value="/add", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/add", method=RequestMethod.POST, 
+			produces="application/json",
+			consumes="application/json")
 	@ResponseBody
-	public AppResponse addProspect(@RequestBody Person person ) {
+	public AppResponse addProspect(@RequestBody Person person) {
 		
 		AppResponse response = new AppResponse();
 		try{
+			prospectService.addProspect(person);
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();

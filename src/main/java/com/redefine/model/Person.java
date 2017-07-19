@@ -8,12 +8,15 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Table(name="persons")
 @Entity
@@ -41,16 +44,18 @@ public class Person implements Serializable {
 	@Column(name="email")
 	private String email;
 	
-	@Column(name="birth_date")
+	@Column(name="birthdate")
 	private Date birthDate;
 	
 	@Column(name="is_prospect")
 	private Boolean isProspect;
 	
 	@Column(name="date_created")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
 	
 	@Column(name="date_updated")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateUpdated;
 	
 	@Column(name="created_by")
@@ -59,7 +64,7 @@ public class Person implements Serializable {
 	@Column(name="updated_by")
 	private String updatedBy;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="person_id", referencedColumnName="person_id")
 	private List<Address> addresses;
 	
