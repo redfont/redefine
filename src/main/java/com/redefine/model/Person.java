@@ -1,19 +1,13 @@
 package com.redefine.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,8 +41,29 @@ public class Person implements Serializable {
 	@Column(name="birthdate")
 	private Date birthDate;
 	
+	@Column(name="address_1")
+	private String address1;
+	
+	@Column(name="address_2")
+	private String address2;
+	
+	@Column(name="barangay")
+	private String barangay;
+	
+	@Column(name="city_or_municipality")
+	private String cityOrMunicipality;
+	
+	@Column(name="postal_code")
+	private String postalCode;
+	
 	@Column(name="is_prospect")
 	private Boolean isProspect;
+	
+	@Column(name="is_supplier")
+	private Boolean isSupplier;
+	
+	@Column(name="is_customer")
+	private Boolean isCustomer;
 	
 	@Column(name="date_created")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -63,10 +78,6 @@ public class Person implements Serializable {
 	
 	@Column(name="updated_by")
 	private String updatedBy;
-	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="person_id", referencedColumnName="person_id")
-	private List<Address> addresses;
 	
 	public Person(){}
 
@@ -118,6 +129,70 @@ public class Person implements Serializable {
 		this.birthDate = birthDate;
 	}
 
+	public String getAddress1() {
+		return address1;
+	}
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getBarangay() {
+		return barangay;
+	}
+
+	public void setBarangay(String barangay) {
+		this.barangay = barangay;
+	}
+
+	public String getCityOrMunicipality() {
+		return cityOrMunicipality;
+	}
+
+	public void setCityOrMunicipality(String cityOrMunicipality) {
+		this.cityOrMunicipality = cityOrMunicipality;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public Boolean getIsProspect() {
+		return isProspect;
+	}
+
+	public void setIsProspect(Boolean isProspect) {
+		this.isProspect = isProspect;
+	}
+
+	public Boolean getIsSupplier() {
+		return isSupplier;
+	}
+
+	public void setIsSupplier(Boolean isSupplier) {
+		this.isSupplier = isSupplier;
+	}
+
+	public Boolean getIsCustomer() {
+		return isCustomer;
+	}
+
+	public void setIsCustomer(Boolean isCustomer) {
+		this.isCustomer = isCustomer;
+	}
+
 	public Date getDateCreated() {
 		return dateCreated;
 	}
@@ -148,16 +223,5 @@ public class Person implements Serializable {
 
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
-	}
-
-	public List<Address> getAddresses() {
-		if(this.addresses == null){
-			this.addresses = new ArrayList<Address>();
-		}
-		return addresses;
-	}
-
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
 	}
 }

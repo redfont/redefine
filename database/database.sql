@@ -119,3 +119,14 @@ add foreign key (`person_id`) references `persons`(`person_id`);
 
 ALTER TABLE `redfin`.`persons` 
 ADD COLUMN `is_prospect` TINYINT(1) NULL DEFAULT 1 AFTER `birthdate`;
+
+ALTER TABLE `redfin`.`persons` 
+ADD COLUMN `address_1` VARCHAR(200) NULL AFTER `birthdate`,
+ADD COLUMN `address_2` VARCHAR(200) NULL AFTER `address_1`,
+ADD COLUMN `barangay` VARCHAR(200) NULL AFTER `address_2`,
+ADD COLUMN `city_or_municipality` VARCHAR(200) NULL AFTER `barangay`,
+ADD COLUMN `postal_code` VARCHAR(20) NULL AFTER `city_or_municipality`,
+ADD COLUMN `is_supplier` TINYINT(1) NULL DEFAULT 0 AFTER `is_prospect`,
+ADD COLUMN `is_customer` TINYINT(1) NULL DEFAULT 0 AFTER `is_supplier`;
+
+drop table addresses;
