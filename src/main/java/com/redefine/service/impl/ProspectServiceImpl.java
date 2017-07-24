@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.redefine.dao.ProspectDao;
+import com.redefine.dao.PersonDao;
 import com.redefine.model.Person;
 import com.redefine.service.ProspectService;
 
@@ -13,7 +13,7 @@ import com.redefine.service.ProspectService;
 public class ProspectServiceImpl implements ProspectService {
 
 	@Autowired
-	private ProspectDao prospectDao;
+	private PersonDao prospectDao;
 	
 	@Override
 	public void addProspect(Person person) throws Exception {

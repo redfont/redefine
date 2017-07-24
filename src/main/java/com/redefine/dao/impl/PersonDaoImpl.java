@@ -9,11 +9,11 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.redefine.dao.ProspectDao;
+import com.redefine.dao.PersonDao;
 import com.redefine.model.Person;
 
 @Repository
-public class ProspectDaoImpl implements ProspectDao {
+public class PersonDaoImpl implements PersonDao {
 
 	@PersistenceContext(unitName="rdfine")
 	private EntityManager em;
