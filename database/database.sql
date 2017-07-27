@@ -130,3 +130,36 @@ ADD COLUMN `is_supplier` TINYINT(1) NULL DEFAULT 0 AFTER `is_prospect`,
 ADD COLUMN `is_customer` TINYINT(1) NULL DEFAULT 0 AFTER `is_supplier`;
 
 drop table addresses;
+
+CREATE TABLE `redfin`.`ledgers` (
+  `ledger_id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(200) NULL,
+  `description` VARCHAR(500) NULL,
+  PRIMARY KEY (`ledger_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5;
+
+CREATE TABLE `redfin`.`control_accounts` (
+  `control_account_id` INT NOT NULL AUTO_INCREMENT,
+  `ledger_id` INT NULL,
+  `title` VARCHAR(200) NULL,
+  `description` VARCHAR(500) NULL,
+  PRIMARY KEY (`control_account_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5;
+
+alter table `redfin`.`control_accounts`
+add foreign key (`ledger_id`) references `ledgers`(`ledger_id`);
+
+CREATE TABLE `redfin`.`ledger_subsidiaries` (
+  `ledger_subsidiary_id` INT NOT NULL,
+  `control_account_id` INT NULL,
+  `account_name` VARCHAR(200) NULL,
+  `description` VARCHAR(500) NULL,
+  PRIMARY KEY (`ledger_subsidiary_id`),
+  UNIQUE INDEX `account_name_UNIQUE` (`account_name` ASC))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5;
+
+alter table `redfin`.`ledger_subsidiaries`
+add foreign key (`control_account_id`) references `control_accounts`(`control_account_id`);
