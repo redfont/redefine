@@ -16,6 +16,14 @@
     <filter-name>springSecurityFilterChain</filter-name>
     <url-pattern>/main/*</url-pattern>
   </filter-mapping>
+   <filter>
+  	<filter-name>openEntityManagerInView</filter-name>
+  	<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>openEntityManagerInView</filter-name>
+  	<url-pattern>/main/*</url-pattern>
+  </filter-mapping>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

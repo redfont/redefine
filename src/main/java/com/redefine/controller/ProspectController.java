@@ -36,7 +36,7 @@ public class ProspectController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getProspects", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/list", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	public AppResponse getProspects(){
 		AppResponse response = new AppResponse();
@@ -50,7 +50,7 @@ public class ProspectController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getProspect", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/single/{id}", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	public AppResponse getProspect(@PathVariable("id") int id){
 		AppResponse response = new AppResponse();

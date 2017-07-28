@@ -36,7 +36,7 @@ public class ExpenseTypeController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getExpenseTypes", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/list", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	public AppResponse getExpenseTypes(){
 		AppResponse response = new AppResponse();
@@ -50,7 +50,7 @@ public class ExpenseTypeController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getExpenseType/{code}", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/single/{code}", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	public AppResponse getExpenseType(@PathVariable("code") String code){
 		AppResponse response = new AppResponse();

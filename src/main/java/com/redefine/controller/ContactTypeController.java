@@ -32,7 +32,7 @@ public class ContactTypeController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getContactTypes", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/list", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	public AppResponse getContactTypes() {
 		AppResponse response = new AppResponse();
@@ -45,7 +45,7 @@ public class ContactTypeController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getContactType/{code}", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/single/{code}", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	public AppResponse getContactType(@PathVariable("code") String code) {
 		AppResponse response = new AppResponse();

@@ -31,7 +31,8 @@
         <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
     </bean>
     
-	<bean id="x2emf"
+    
+	 <bean id="x2emf"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="rdfine" />
         <property name="dataSource" ref="x2dataSource" />

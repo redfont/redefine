@@ -12,9 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name="ledger_subsidiaries")
+@Table(name="ctrl_acct_subsidiaries")
 @Entity
-public class LedgerSubsidiary implements Serializable {
+public class ControlAccountSubsidiary implements Serializable {
 	/**
 	 * 
 	 */
@@ -22,8 +22,11 @@ public class LedgerSubsidiary implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ledger_subsidiary_id")
-	private Integer ledgerSubsidiaryId;
+	@Column(name="ctrl_acct_subsidiary_id")
+	private Integer controlAccountSubsidiaryId;
+	
+	@Column(name="account_no")
+	private String accountNumber;
 	
 	@Column(name="account_name")
 	private String accountName;
@@ -35,15 +38,35 @@ public class LedgerSubsidiary implements Serializable {
 	@JoinColumn(name="control_account_id")
 	private ControlAccount controlAccount;
 
-	public LedgerSubsidiary() {
+	public ControlAccountSubsidiary() {
 	}
 
-	public Integer getLedgerSubsidiaryId() {
-		return ledgerSubsidiaryId;
+	/**
+	 * @return the controlAccountSubsidiaryId
+	 */
+	public Integer getControlAccountSubsidiaryId() {
+		return controlAccountSubsidiaryId;
 	}
 
-	public void setLedgerSubsidiaryId(Integer ledgerSubsidiaryId) {
-		this.ledgerSubsidiaryId = ledgerSubsidiaryId;
+	/**
+	 * @param controlAccountSubsidiaryId the controlAccountSubsidiaryId to set
+	 */
+	public void setControlAccountSubsidiaryId(Integer controlAccountSubsidiaryId) {
+		this.controlAccountSubsidiaryId = controlAccountSubsidiaryId;
+	}
+
+	/**
+	 * @return the accountNumber
+	 */
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	/**
+	 * @param accountNumber the accountNumber to set
+	 */
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	public String getAccountName() {

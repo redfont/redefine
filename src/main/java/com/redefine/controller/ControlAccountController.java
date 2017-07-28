@@ -8,70 +8,65 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.redefine.model.Category;
+import com.redefine.model.ControlAccount;
 import com.redefine.response.AppResponse;
-import com.redefine.service.CategoryService;
+import com.redefine.service.ControlAccountService;
 
 @Controller
-@RequestMapping(value="/category")
-public class CategoryController {
+@RequestMapping(value="controlacct")
+public class ControlAccountController {
 
 	@Autowired
-	private CategoryService categoryService;
+	private ControlAccountService controlAccountService;
 	
-	@RequestMapping(value="/add", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/add", method=RequestMethod.POST, consumes="application/json",produces="application/json")
 	@ResponseBody
-	public AppResponse addCategory(@RequestBody Category category) {
+	public AppResponse addControlAccount(@RequestBody ControlAccount controlAccount) {
 		AppResponse response = new AppResponse();
 		try{
-			categoryService.addCategory(category);
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
-			e.printStackTrace();
 			response.getMessages().add(e.getMessage());
 		}
 		return response;
 	}
 	
-	@RequestMapping(value="/list", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/list", method=RequestMethod.GET,produces="application/json")
 	@ResponseBody
-	public AppResponse getCategories() {
+	public AppResponse getControlAccounts() {
 		AppResponse response = new AppResponse();
-		try{
-			response.setData(categoryService.getCategories());
-			response.setIsSuccess(Boolean.TRUE);
-		}catch(Exception e) {
-			e.printStackTrace();
-			response.getMessages().add(e.getMessage());
-		}
 		
-		return response;
-	}
-	
-	@RequestMapping(value="/single/{code}", method=RequestMethod.GET, produces="application/json")
-	@ResponseBody
-	public AppResponse getCategory(@PathVariable("code")String code) {
-		AppResponse response = new AppResponse();
 		try{
-			response.setDataObject(categoryService.getCategory(code));
+			response.setData(controlAccountService.getControlAccounts());
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
-			e.printStackTrace();
 			response.getMessages().add(e.getMessage());
 		}
-		
 		return response;
 	}
 	
-	@RequestMapping(value="/update", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/single/{id}", method=RequestMethod.GET,produces="application/json")
 	@ResponseBody
-	public AppResponse updateCategory(@RequestBody Category category) {
+	public AppResponse getControlAccount(@PathVariable("id") int id) {
 		AppResponse response = new AppResponse();
+		
 		try{
-			categoryService.updateCategory(category);
+			response.setDataObject(controlAccountService.getControlAccount(id));
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
-			e.printStackTrace();
+			response.getMessages().add(e.getMessage());
+		}
+		return response;
+	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.POST, consumes="application/json",produces="application/json")
+	@ResponseBody
+	public AppResponse updateControlAccount(@RequestBody ControlAccount controlAccount) {
+		AppResponse response = new AppResponse();
+		try{
+			controlAccountService.updateControlAccount(controlAccount);
+			response.setIsSuccess(Boolean.TRUE);
+		}catch(Exception e){
 			response.getMessages().add(e.getMessage());
 		}
 		return response;

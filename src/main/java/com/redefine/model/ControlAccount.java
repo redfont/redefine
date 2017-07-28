@@ -1,17 +1,15 @@
 package com.redefine.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,23 +27,22 @@ public class ControlAccount implements Serializable {
 	@Column(name="control_account_id")
 	private Integer controlAccountId;
 	
+	@Column(name="account_no")
+	private String accountNumber;
+	
 	@Column(name="title")
 	private String title;
 	
 	@Column(name="description")
 	private String description;
-
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="ledger_id")
-	private Ledger ledger;
 	
 	@OneToMany(mappedBy="controlAccount",
 			cascade=CascadeType.ALL,
 			orphanRemoval=true)
-	private List<ControlAccount> ledgerSubsidiaries;
+	private List<ControlAccountSubsidiary> controlAccountSubsidiaries;
 	
 	public ControlAccount() {
-		
+		controlAccountSubsidiaries = new ArrayList<ControlAccountSubsidiary>();
 	}
 
 	/**
@@ -60,6 +57,20 @@ public class ControlAccount implements Serializable {
 	 */
 	public void setControlAccountId(Integer controlAccountId) {
 		this.controlAccountId = controlAccountId;
+	}
+
+	/**
+	 * @return the accountNumber
+	 */
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	/**
+	 * @param accountNumber the accountNumber to set
+	 */
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	/**
@@ -91,24 +102,18 @@ public class ControlAccount implements Serializable {
 	}
 
 	/**
-	 * @return the ledger
+	 * @return the controlAccountSubsidiaries
 	 */
-	public Ledger getLedger() {
-		return ledger;
+	public List<ControlAccountSubsidiary> getControlAccountSubsidiaries() {
+		return controlAccountSubsidiaries;
 	}
 
 	/**
-	 * @param ledger the ledger to set
+	 * @param controlAccountSubsidiaries the controlAccountSubsidiaries to set
 	 */
-	public void setLedger(Ledger ledger) {
-		this.ledger = ledger;
+	public void setControlAccountSubsidiaries(
+			List<ControlAccountSubsidiary> controlAccountSubsidiaries) {
+		this.controlAccountSubsidiaries = controlAccountSubsidiaries;
 	}
 
-	public List<ControlAccount> getLedgerSubsidiaries() {
-		return ledgerSubsidiaries;
-	}
-
-	public void setLedgerSubsidiaries(List<ControlAccount> ledgerSubsidiaries) {
-		this.ledgerSubsidiaries = ledgerSubsidiaries;
-	}
 }

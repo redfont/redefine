@@ -172,3 +172,26 @@ INSERT INTO `redfin`.`ledgers`(`ledger_id`,`title`,`description`) VALUES (null,'
 
 INSERT INTO `redfin`.`control_accounts` (`control_account_id`,`ledger_id`,`title`,`description`) VALUES (null,5,'Cash and Cash Equivalent',null);
 INSERT INTO `redfin`.`ledger_subsidiaries`(`ledger_subsidiary_id`,`control_account_id`,`account_name`,`description`) VALUES (null,5,'Cash',null);
+
+ALTER TABLE `redfin`.`control_accounts` 
+ADD COLUMN `account_no` VARCHAR(50) NULL DEFAULT NULL AFTER `ledger_id`,
+ADD UNIQUE INDEX `account_no_UNIQUE` (`account_no` ASC);
+
+ALTER TABLE `redfin`.`control_accounts` 
+DROP FOREIGN KEY `control_accounts_ibfk_1`;
+
+alter table control_accounts drop column `ledger_id`;
+
+drop table ledgers;
+
+ALTER TABLE `redfin`.`ledger_subsidiaries` 
+CHANGE COLUMN `ledger_subsidiary_id` `ctrl_acct_subsidiary_id` INT(11) NOT NULL AUTO_INCREMENT ,
+ADD COLUMN `account_no` VARCHAR(50) NULL DEFAULT NULL AFTER `control_account_id`,
+ADD UNIQUE INDEX `account_no_UNIQUE` (`account_no` ASC), RENAME TO  `redfin`.`control_acct_subsidiaries` ;
+
+ALTER TABLE `redfin`.`control_acct_subsidiaries` 
+RENAME TO  `redfin`.`ctrl_acct_subsidiaries` ;
+
+INSERT INTO `redfin`.`control_accounts` (`account_no`, `title`, `description`) VALUES ('1001', 'CASH AND CASH EQUIVALENT', 'Cash');
+INSERT INTO `redfin`.`ctrl_acct_subsidiaries` (`control_account_id`, `account_no`, `account_name`, `description`) VALUES ('5', '1001-1', 'CASH IN BANK', 'BDO');
+

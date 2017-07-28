@@ -36,7 +36,7 @@ public class UserController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getUsers", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/list", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	public AppResponse getUsers() {
 		AppResponse response = new AppResponse();
@@ -50,7 +50,7 @@ public class UserController {
 		return response;
 	}
 	
-	@RequestMapping(value="/getUser/{id}", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/single/{id}", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	public AppResponse getUser(@PathVariable("id") Integer id) {
 		AppResponse response = new AppResponse();
