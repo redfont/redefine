@@ -1,7 +1,7 @@
 package com.redefine.model;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,7 +35,7 @@ public class Ledger implements Serializable {
 	@OneToMany(mappedBy="ledger",
 			cascade=CascadeType.ALL,
 			orphanRemoval=true)
-	private Set<ControlAccount> controlAccounts;
+	private List<ControlAccount> controlAccounts;
 	
 	public Ledger() {
 		
@@ -86,14 +86,14 @@ public class Ledger implements Serializable {
 	/**
 	 * @return the controlAccounts
 	 */
-	public Set<ControlAccount> getControlAccounts() {
+	public List<ControlAccount> getControlAccounts() {
 		return controlAccounts;
 	}
 
 	/**
 	 * @param controlAccounts the controlAccounts to set
 	 */
-	public void setControlAccounts(Set<ControlAccount> controlAccounts) {
+	public void setControlAccounts(List<ControlAccount> controlAccounts) {
 		this.controlAccounts = controlAccounts;
 	}
 

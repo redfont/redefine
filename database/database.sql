@@ -163,3 +163,12 @@ AUTO_INCREMENT = 5;
 
 alter table `redfin`.`ledger_subsidiaries`
 add foreign key (`control_account_id`) references `control_accounts`(`control_account_id`);
+
+ALTER TABLE `redfin`.`ledger_subsidiaries` 
+CHANGE COLUMN `ledger_subsidiary_id` `ledger_subsidiary_id` INT(11) NOT NULL AUTO_INCREMENT ;
+
+INSERT INTO `redfin`.`ledgers`(`ledger_id`,`title`,`description`) VALUES (null,'Assests',null);
+INSERT INTO `redfin`.`ledgers`(`ledger_id`,`title`,`description`) VALUES (null,'Liabilities',null);
+
+INSERT INTO `redfin`.`control_accounts` (`control_account_id`,`ledger_id`,`title`,`description`) VALUES (null,5,'Cash and Cash Equivalent',null);
+INSERT INTO `redfin`.`ledger_subsidiaries`(`ledger_subsidiary_id`,`control_account_id`,`account_name`,`description`) VALUES (null,5,'Cash',null);

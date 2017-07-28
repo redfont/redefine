@@ -6,6 +6,7 @@
 		<class>com.redefine.model.ControlAccount</class>
 		<class>com.redefine.model.ExpenseType</class>
 		<class>com.redefine.model.Ledger</class>
+		<class>com.redefine.model.LedgerSubsidiary</class>
 		<class>com.redefine.model.Person</class>
 		<class>com.redefine.model.User</class>
 	</persistence-unit>

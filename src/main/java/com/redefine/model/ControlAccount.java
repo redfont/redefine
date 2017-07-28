@@ -1,7 +1,9 @@
 package com.redefine.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name="control_accounts")
@@ -35,6 +38,11 @@ public class ControlAccount implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ledger_id")
 	private Ledger ledger;
+	
+	@OneToMany(mappedBy="controlAccount",
+			cascade=CascadeType.ALL,
+			orphanRemoval=true)
+	private List<ControlAccount> ledgerSubsidiaries;
 	
 	public ControlAccount() {
 		
@@ -96,4 +104,11 @@ public class ControlAccount implements Serializable {
 		this.ledger = ledger;
 	}
 
+	public List<ControlAccount> getLedgerSubsidiaries() {
+		return ledgerSubsidiaries;
+	}
+
+	public void setLedgerSubsidiaries(List<ControlAccount> ledgerSubsidiaries) {
+		this.ledgerSubsidiaries = ledgerSubsidiaries;
+	}
 }
