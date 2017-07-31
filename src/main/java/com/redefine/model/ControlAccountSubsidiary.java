@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Table(name="ctrl_acct_subsidiaries")
 @Entity
 public class ControlAccountSubsidiary implements Serializable {
@@ -24,7 +26,7 @@ public class ControlAccountSubsidiary implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ctrl_acct_subsidiary_id")
 	private Integer controlAccountSubsidiaryId;
-	
+		
 	@Column(name="account_no")
 	private String accountNumber;
 	
@@ -36,8 +38,9 @@ public class ControlAccountSubsidiary implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="control_account_id")
+	@JsonBackReference
 	private ControlAccount controlAccount;
-
+	
 	public ControlAccountSubsidiary() {
 	}
 

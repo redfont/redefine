@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Table(name="control_accounts")
 @Entity
 public class ControlAccount implements Serializable {
@@ -36,9 +38,10 @@ public class ControlAccount implements Serializable {
 	@Column(name="description")
 	private String description;
 	
-	@OneToMany(mappedBy="controlAccount",
-			cascade=CascadeType.ALL,
-			orphanRemoval=true)
+	@OneToMany(mappedBy="controlAccount", 
+			orphanRemoval=true,
+			cascade={CascadeType.ALL})
+	@JsonManagedReference
 	private List<ControlAccountSubsidiary> controlAccountSubsidiaries;
 	
 	public ControlAccount() {

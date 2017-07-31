@@ -177,6 +177,10 @@ ALTER TABLE `redfin`.`control_accounts`
 ADD COLUMN `account_no` VARCHAR(50) NULL DEFAULT NULL AFTER `ledger_id`,
 ADD UNIQUE INDEX `account_no_UNIQUE` (`account_no` ASC);
 
+delete from control_accounts;
+delete from ledger_subsidiaries;
+delete from ledgers;
+
 ALTER TABLE `redfin`.`control_accounts` 
 DROP FOREIGN KEY `control_accounts_ibfk_1`;
 
@@ -194,4 +198,77 @@ RENAME TO  `redfin`.`ctrl_acct_subsidiaries` ;
 
 INSERT INTO `redfin`.`control_accounts` (`account_no`, `title`, `description`) VALUES ('1001', 'CASH AND CASH EQUIVALENT', 'Cash');
 INSERT INTO `redfin`.`ctrl_acct_subsidiaries` (`control_account_id`, `account_no`, `account_name`, `description`) VALUES ('5', '1001-1', 'CASH IN BANK', 'BDO');
+
+-- 07/30/2017
+CREATE TABLE `redfin`.`purchases` (
+  `purchase_id` INT NOT NULL AUTO_INCREMENT,
+  `total_amount` DECIMAL(18,6) NULL DEFAULT 0.00,
+  `date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` TIMESTAMP NULL,
+  `created_by` VARCHAR(100) NULL,
+  `updated_by` VARCHAR(100) NULL,
+  PRIMARY KEY (`purchase_id`));
+
+create trigger purchase_update before update on purchases
+for each row set NEW.date_updated = CURRENT_TIMESTAMP;
+
+CREATE TABLE `redfin`.`items` (
+  `item_id` INT NOT NULL,
+  `purchase_id` INT NULL,
+  `sale_id` INT NULL,
+  `category_code` VARCHAR(50) NULL,
+  `quantity` INT NULL,
+  `size` VARCHAR(45) NULL,
+  `description` VARCHAR(500) NULL,
+  `unit_price` DECIMAL(18,6) NULL DEFAULT 0.00,
+  `total` DECIMAL(18,6) NULL DEFAULT 0.00,
+  PRIMARY KEY (`item_id`));
+
+alter table `redfin`.`items`
+add foreign key (`purchase_id`) references `purchases`(`purchase_id`);
+
+ALTER TABLE `redfin`.`items` 
+DROP FOREIGN KEY `items_ibfk_1`;
+ALTER TABLE `redfin`.`items` 
+DROP COLUMN `total`,
+DROP COLUMN `unit_price`,
+DROP COLUMN `quantity`,
+DROP COLUMN `sale_id`,
+DROP COLUMN `purchase_id`,
+DROP INDEX `purchase_id` ;
+
+CREATE TABLE `purchased_items` (
+  `purchased_item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) DEFAULT NULL,
+  `purchase_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT '0',
+  `total_cost` decimal(18,6) DEFAULT '0.000000',
+  PRIMARY KEY (`purchased_item_id`)
+)
+
+alter table `redfin`.`purchased_items`
+add foreign key (`item_id`) references `items`(`item_id`);
+
+alter table `redfin`.`purchased_items`
+add foreign key (`purchase_id`) references `purchases`(`purchase_id`);
+
+ALTER TABLE `redfin`.`items` 
+DROP COLUMN `size`,
+ADD COLUMN `is_active` TINYINT(1) NULL AFTER `description`,
+ADD COLUMN `date_created` TIMESTAMP NULL AFTER `is_active`,
+ADD COLUMN `date_updated` TIMESTAMP NULL AFTER `date_created`,
+ADD COLUMN `created_by` VARCHAR(50) NULL AFTER `date_updated`,
+ADD COLUMN `updated_by` VARCHAR(50) NULL AFTER `created_by`;
+
+alter table `items`
+add foreign key (`category_code`) references `categories`(`code`);
+
+create trigger item_update before update on items
+for each row set NEW.date_updated = CURRENT_TIMESTAMP;
+
+ALTER TABLE `redfin`.`items` 
+CHANGE COLUMN `item_id` `item_id` INT(11) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `redfin`.`items` 
+CHANGE COLUMN `date_created` `date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
 
