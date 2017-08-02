@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -54,6 +56,10 @@ public class Purchase implements Serializable{
 			orphanRemoval=true)
 	@JsonManagedReference
 	private List<PurchasedItem> purchaseItems;
+	
+	@ManyToOne
+	@JoinColumn(name="person_id", referencedColumnName="person_id")
+	private Person supplier;
 	
 	public Purchase(){
 		purchaseItems = new ArrayList<PurchasedItem>();
@@ -113,6 +119,20 @@ public class Purchase implements Serializable{
 
 	public void setPurchaseItems(List<PurchasedItem> purchaseItems) {
 		this.purchaseItems = purchaseItems;
+	}
+
+	/**
+	 * @return the supplier
+	 */
+	public Person getSupplier() {
+		return supplier;
+	}
+
+	/**
+	 * @param supplier the supplier to set
+	 */
+	public void setSupplier(Person supplier) {
+		this.supplier = supplier;
 	}
 
 }

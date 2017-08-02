@@ -10,6 +10,7 @@
 		<class>com.redefine.model.Person</class>
 		<class>com.redefine.model.Purchase</class>
 		<class>com.redefine.model.PurchasedItem</class>
+		<class>com.redefine.model.Sale</class>
 		<class>com.redefine.model.User</class>
 	</persistence-unit>
 </persistence>

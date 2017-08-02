@@ -293,4 +293,9 @@ CREATE TABLE `redfin`.`sales` (
   `total_amount` DOUBLE(18,6) NULL DEFAULT 0.00,
   PRIMARY KEY (`sold_item_id`));
 
-  
+ALTER TABLE `redfin`.`persons` 
+CHANGE COLUMN `person_id` `person_id` INT(11) NOT NULL ;
+
+ALTER TABLE `redfin`.`purchases` 
+ADD COLUMN `person_id` INT NULL DEFAULT NULL AFTER `purchase_id`;
+
