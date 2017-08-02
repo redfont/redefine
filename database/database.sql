@@ -272,3 +272,25 @@ CHANGE COLUMN `item_id` `item_id` INT(11) NOT NULL AUTO_INCREMENT ;
 ALTER TABLE `redfin`.`items` 
 CHANGE COLUMN `date_created` `date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
 
+-- 09-02-2017
+CREATE TABLE `redfin`.`sales` (
+  `sale_id` INT NOT NULL AUTO_INCREMENT,
+  `sale_date` VARCHAR(45) NULL,
+  `person_id` INT NULL,
+  `sale_type` VARCHAR(45) NULL,
+  `date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` TIMESTAMP NULL,
+  `updated_by` VARCHAR(50) NULL,
+  `created_by` VARCHAR(50) NULL,
+  PRIMARY KEY (`sale_id`));
+
+  CREATE TABLE `redfin`.`sold_items` (
+  `sold_item_id` INT NOT NULL AUTO_INCREMENT,
+  `purchase_item_id` INT NULL,
+  `sales_return_item_id` INT NULL,
+  `quantity` INT NULL,
+  `unit_srp` DOUBLE(18,6) NULL DEFAULT 0.00,
+  `total_amount` DOUBLE(18,6) NULL DEFAULT 0.00,
+  PRIMARY KEY (`sold_item_id`));
+
+  
