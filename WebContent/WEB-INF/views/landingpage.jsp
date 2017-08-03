@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/ng-material-icon.css">
 
 	<script type="text/javascript">
+		
 		var context = '<%=request.getContextPath()%>';
 		
 		function endsWith(str, suffix) {
@@ -42,4 +43,5 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/app.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/routing.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/root.controller.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/auth.controller.js"></script>
 </html>

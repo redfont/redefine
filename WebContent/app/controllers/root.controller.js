@@ -4,6 +4,6 @@
 	
 	function RootController($scope, $http, $location) {
 		var vm = this;
-		//console.log('root');
+		console.log('root');
 	}
 })();

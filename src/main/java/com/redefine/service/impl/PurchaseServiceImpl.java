@@ -3,11 +3,13 @@ package com.redefine.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.redefine.dao.PurchaseDao;
 import com.redefine.model.Purchase;
 import com.redefine.service.PurchaseService;
 
+@Service
 public class PurchaseServiceImpl implements PurchaseService {
 
 	@Autowired

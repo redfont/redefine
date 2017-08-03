@@ -48,7 +48,7 @@ public class Purchase implements Serializable{
 	@Column(name="created_by")
 	private String createdBy;
 	
-	@Column(name="created_by")
+	@Column(name="updated_by")
 	private String updatedBy;
 
 	@OneToMany(mappedBy="purchase",

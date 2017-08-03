@@ -3,10 +3,11 @@
 	app.config(['$routeProvider',config]);
 	
 	function config($routeProvider){
-		
+		console.log('routeProvider');
 		$routeProvider
 			.when('/', {
-				templateUrl: 'app/partials/home.view.jsp'
+				controller  : 'AuthController as vm',
+				templateUrl : 'app/partials/login.view.jsp'
 			});
 		/*$routeProvider
 			.when('/userpage', {
