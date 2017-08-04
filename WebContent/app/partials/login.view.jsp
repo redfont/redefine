@@ -3,7 +3,7 @@
 	<table>
 		<tr>
 			<td>Username:</td>
-			<td><input type="text" ng-model="vm.userId"></td>
+			<td><input type="text" ng-model="vm.username"></td>
 		</tr>
 		<tr>
 			<td>Password:</td>

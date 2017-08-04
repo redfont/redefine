@@ -18,7 +18,10 @@ public class AuthController {
 	@Autowired
 	private AuthService authService;
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/login", 
+			method=RequestMethod.POST, 
+			consumes="application/json",
+			produces="application/json")
 	@ResponseBody
 	public AppResponse auth(@RequestBody User user) {
 		AppResponse response = new AppResponse();

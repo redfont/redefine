@@ -6,18 +6,39 @@
 		var vm = this;
 		vm.reset = reset;
 		vm.login = login;
+		vm.user = {
+			"username":"",
+			"password":""
+		};
 		
 		init();
 		
 		function init(){
-			vm.userId = "";
+			vm.username = "";
 			vm.secret = "";
-			console.error("TEST");
 		}
 		
 		function login() {
-			console.log(vm.userId);
+			console.log(vm.username);
 			console.log(vm.secret);
+			vm.user.username = vm.username;
+			vm.user.password = vm.secret;
+			
+			$http({
+				method:'POST',
+				url:context + '/main/auth/login',
+				data: vm.user,
+				headers: {
+					'Content-Type':'application/json'
+				}
+			}).then(
+				function success(response){
+					console.log(response);	
+				},
+				function error(response){
+						
+				}
+			);
 		}
 		
 		function logout() {
