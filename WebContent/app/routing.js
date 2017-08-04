@@ -8,6 +8,21 @@
 			.when('/', {
 				controller  : 'AuthController as vm',
 				templateUrl : 'app/partials/login.view.jsp'
+			})
+			.when('/home', {
+				templateUrl : 'app/partials/home.view.jsp'
+			})
+			.when('/user', {
+				controller	: 'UserController as vm',
+				templateUrl : 'app/partials/user.view.jsp'
+			})
+			.when('/contactType', {
+				controller	: 'ContactTypeController as vm',
+				templateUrl : 'app/partials/contactType.view.jsp'
+			})
+			.when('/category', {
+				controller	: 'CategoryController as vm',
+				templateUrl : 'app/partials/category.view.jsp'
 			});
 		/*$routeProvider
 			.when('/userpage', {

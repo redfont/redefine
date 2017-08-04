@@ -14,6 +14,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="users")
+@org.hibernate.annotations.Entity(
+		dynamicUpdate = true
+)
 public class User implements Serializable {
 
 	/**

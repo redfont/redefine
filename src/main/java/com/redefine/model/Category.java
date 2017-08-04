@@ -12,6 +12,9 @@ import javax.persistence.TemporalType;
 
 @Table(name="categories")
 @Entity
+@org.hibernate.annotations.Entity(
+		dynamicUpdate = true
+)
 public class Category implements Serializable {
 
 	/**

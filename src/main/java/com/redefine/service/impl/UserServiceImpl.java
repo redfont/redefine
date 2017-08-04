@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.redefine.dao.UserDao;
 import com.redefine.model.User;
 import com.redefine.service.UserService;
+import com.redefine.util.Util;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,7 +27,6 @@ public class UserServiceImpl implements UserService {
 	public void addUser(User user) throws Exception {
 		String encryptedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encryptedPassword);
-		
 		userDao.addUser(user);
 	}
 
@@ -42,9 +42,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateUser(User user) throws Exception {
-		String encryptedPassword = passwordEncoder.encode(user.getPassword());
-		user.setPassword(encryptedPassword);
-		
-		userDao.updateUser(user);
+		User managed = null;
+		if(Util.hasValue(user.getPassword())){
+			String encryptedPassword = passwordEncoder.encode(user.getPassword());
+			user.setPassword(encryptedPassword);
+			managed = user;
+		} else {
+			managed = userDao.getUser(user.getUserId());
+			managed.setEmail(user.getEmail());
+		}
+		userDao.updateUser(managed);
 	}	
 }

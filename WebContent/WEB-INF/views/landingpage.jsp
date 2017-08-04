@@ -44,4 +44,7 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/routing.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/root.controller.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/auth.controller.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/user.controller.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/category.controller.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/contactType.controller.js"></script>
 </html>

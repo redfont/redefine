@@ -40,6 +40,7 @@ public class ContactTypeController {
 			response.setData(contactTypeService.getContactTypes());
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
+			e.printStackTrace();
 			response.getMessages().add(e.getMessage());
 		}
 		return response;

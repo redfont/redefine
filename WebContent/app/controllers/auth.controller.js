@@ -33,7 +33,12 @@
 				}
 			}).then(
 				function success(response){
-					console.log(response);	
+					var authorized = response.data.isSuccess;
+					console.log(response);
+					if(authorized){
+						$location.path('home');
+					}
+						
 				},
 				function error(response){
 						
@@ -47,7 +52,7 @@
 		
 		function reset() {
 			console.log("RESET");
-			vm.userId = "";
+			vm.username = "";
 			vm.secret = "";
 		}
 	}
