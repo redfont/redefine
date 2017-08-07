@@ -308,3 +308,12 @@ CHANGE COLUMN `person_id` `person_id` INT(11) NOT NULL AUTO_INCREMENT ;
 
 ALTER TABLE `redfin`.`persons` 
 CHANGE COLUMN `date_created` `date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `redfin`.`control_accounts` 
+ADD COLUMN `date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `description`,
+ADD COLUMN `date_updated` TIMESTAMP NULL DEFAULT NULL AFTER `date_created`,
+ADD COLUMN `created_by` VARCHAR(50) NULL DEFAULT NULL AFTER `date_updated`,
+ADD COLUMN `updated_by` VARCHAR(50) NULL DEFAULT NULL AFTER `created_by`;
+
+create trigger control_account_update before update on `control_accounts`
+for each row set NEW.date_updated = CURRENT_TIMESTAMP;

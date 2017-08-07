@@ -27,6 +27,10 @@
 			.when('/prospect', {
 				controller: 'ProspectController as vm',
 				templateUrl: 'app/partials/person.view.jsp'
+			})
+			.when('/controlAcct', {
+				controller : 'ControlAcctController as vm',
+				templateUrl: 'app/partials/controlAcct.view.jsp'
 			});
 		/*$routeProvider
 			.when('/userpage', {

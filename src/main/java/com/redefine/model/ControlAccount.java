@@ -2,6 +2,7 @@ package com.redefine.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -37,6 +40,20 @@ public class ControlAccount implements Serializable {
 	
 	@Column(name="description")
 	private String description;
+	
+	@Column(name="date_created", insertable=false,updatable=false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateCreated;
+	
+	@Column(name="date_updated", updatable=false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateUpdated;
+	
+	@Column(name="created_by")
+	private String createdBy;
+	
+	@Column(name="updated_by")
+	private String updatedBy;
 	
 	@OneToMany(mappedBy="controlAccount", 
 			orphanRemoval=true,
@@ -102,6 +119,38 @@ public class ControlAccount implements Serializable {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Date getDateUpdated() {
+		return dateUpdated;
+	}
+
+	public void setDateUpdated(Date dateUpdated) {
+		this.dateUpdated = dateUpdated;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	/**

@@ -1,0 +1,90 @@
+<style type="text/css">
+	._md-toolbar-transitions {
+		min-height: 40px !important;
+	}
+	.md-toolbar-tools {
+		height: 40px !important;
+	}
+</style>
+<md-dialog aria-label="controlAcct">
+	<form ng-cloak>
+		<md-toolbar>
+	      <div class="md-toolbar-tools">
+	        <h2>Control Account</h2>
+	        <span flex></span>
+	        <md-button class="md-icon-button" ng-click="hide()">
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
+	    </md-toolbar>
+		<md-dialog-content >
+			<div class="md-dialog-content">
+				<table>
+					<tr ng-show="controlAccount.controlAccountId > 0">
+						<td colspan="2" style="padding:0px 0px 20px 0px;">
+							<input type="radio" name="action" value="upd" ng-model="action" ng-click="checkAction(this)" style="margin-left:-1px;">Edit
+							<input type="radio" name="action" value="del" ng-model="action" ng-click="checkAction(this)">Delete
+						</td>
+					</tr>
+					<tr >
+						<td>Account Number</td>
+						<td>
+							<input type="text" ng-model="controlAccount.accountNumber" ng-show="!viewOnly">
+							<span ng-show="viewOnly">{{controlAccount.accountNumber}}</span>
+						</td>
+					</tr>
+					<tr>
+						<td>Account Name</td>
+						<td>
+							<input type="text" ng-model="controlAccount.title" ng-show="!viewOnly">
+							<span ng-show="viewOnly">{{controlAccount.title}}</span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							Sub-accounts:
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<table style="width:400px;">
+								<tr>
+									<td>Ref Num</td>
+									<td>Ref Title</td>
+								</tr>
+								<tr ng-repeat="cc in controlAccount.controlAccountSubsidiaries">
+									<td>
+										<input type="text" ng-model="cc.accountNumber" ng-show="!viewOnly">
+										<span ng-show="viewOnly">{{cc.accountNumber}}</span>
+									</td>
+									<td>
+										<input type="text" ng-model="cc.accountName" ng-show="!viewOnly">
+										<span ng-show="viewOnly">{{cc.accountName}}</span>
+									</td>
+									<td ng-show="!viewOnly"><md-button class="md-button md-raised md-primary button-override" 
+											ng-click="delSubAccount(cc)" 
+											style="min-width:30px !important;min-height:25px !important;line-height:15px !important;margin:0 !important;">-</md-button></td>
+								</tr>
+								<tr ng-show="!viewOnly">
+									<td colspan="3" style="text-align: right;">
+										<md-button class="md-button md-raised md-primary button-override" 
+												ng-click="addSubAccount()" style="min-width:50px !important;margin-right:0 !important;">Add</md-button>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</md-dialog-content>
+		
+		<md-dialog-actions layout="row">
+			<md-button class="md-button md-raised md-primary button-override" ng-click="submit()">Submit</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

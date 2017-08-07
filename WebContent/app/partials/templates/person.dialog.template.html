@@ -21,8 +21,8 @@
 			<div class="md-dialog-content">
 				<table style="min-width:400px;">
 					<tr ng-show="person.personId > 0">
-						<td colspan="4" >
-							<input type="radio" name="action" value="upd" ng-model="action" ng-click="checkAction(this)">Edit
+						<td colspan="4" style="padding:0px 0px 20px 0px;">
+							<input type="radio" name="action" value="upd" ng-model="action" ng-click="checkAction(this)" style="margin-left:-1px;">Edit
 							<input type="radio" name="action" value="del" ng-model="action" ng-click="checkAction(this)">Delete
 						</td>
 					</tr>
@@ -33,26 +33,29 @@
 					</tr>
 					<tr>
 						<td>First Name</td>
-						<td ng-if="!viewOnly"><input type="text" ng-model="person.firstName"></td>
-						<td ng-if="viewOnly">{{person.firstName}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="person.firstName"></td>
+						<td ng-show="viewOnly">{{person.firstName}}</td>
 					<tr>
 						<td>Middle Name</td>
-						<td ng-if="!viewOnly"><input type="text" ng-model="person.middleName"></td>
-						<td ng-if="viewOnly">{{person.middleName}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="person.middleName"></td>
+						<td ng-show="viewOnly">{{person.middleName}}</td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
-						<td ng-if="!viewOnly"><input type="text" ng-model="person.lastName"></td>
-						<td ng-if="viewOnly">{{person.lastName}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="person.lastName"></td>
+						<td ng-show="viewOnly">{{person.lastName}}</td>
 					</tr>
 					<tr>
 						<td>Email</td>
-						<td ng-if="!viewOnly"><input type="text" ng-model="person.email"></td>
-						<td ng-if="viewOnly">{{person.email}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="person.email"></td>
+						<td ng-show="viewOnly">{{person.email}}</td>
 					<tr>	
 						<td>Birthdate</td>
-						<td ng-if="!viewOnly"><md-datepicker class="p-date-picker" ng-model="person.birthDate"></md-datepicker></td>
-						<td ng-if="viewOnly">{{person.birthDate | date: 'yyyy-MM-dd'}}</td>
+						<td ng-show="!viewOnly"><md-datepicker class="p-date-picker" ng-model="person.birthDate"></md-datepicker></td>
+						<td ng-show="viewOnly">{{person.birthDate | date: 'yyyy-MM-dd'}}</td>
+					</tr>
+					<tr>
+						<td colspan="4">&nbsp;</td>
 					</tr>
 					<tr>
 						<td colspan="4">Address:</td>
@@ -64,13 +67,13 @@
 					</tr>
 					<tr>
 						<td>Adress 2</td>
-						<td ng-if="!viewOnly"><input type="text" ng-model="person.address2"></td>
-						<td ng-if="viewOnly">{{person.address2}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="person.address2"></td>
+						<td ng-show="viewOnly">{{person.address2}}</td>
 					</tr>
 					<tr>
 						<td>Barangay</td>
-						<td ng-if="!viewOnly"><input type="text" ng-model="person.barangay"></td>
-						<td ng-if="viewOnly">{{person.barangay}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="person.barangay"></td>
+						<td ng-show="viewOnly">{{person.barangay}}</td>
 					</tr>
 					<tr>
 						<td>City/Municipality</td>
@@ -79,13 +82,13 @@
 					</tr>
 					<tr>
 						<td>Province</td>
-						<td ng-if="!viewOnly"><input type="text" ng-model="person.province"></td>
-						<td ng-if="viewOnly">{{person.province}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="person.province"></td>
+						<td ng-show="viewOnly">{{person.province}}</td>
 					</tr>
 					<tr>
 						<td>Postal Code</td>
-						<td ng-if="!viewOnly"><input type="text" ng-model="person.postalCode"></td>
-						<td ng-if="viewOnly">{{person.postalCode}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="person.postalCode"></td>
+						<td ng-show="viewOnly">{{person.postalCode}}</td>
 					</tr>
 				</table>
 			</div>

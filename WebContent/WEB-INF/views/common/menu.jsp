@@ -6,7 +6,7 @@
 <a href="#/prospect">Prospect</a>
 <a href="#/controlAcct">Control Account</a>
 <!-- <div class="menu" ng-controller="MenuController">
-	<ul>
+	<ul	
 		<li><a href="#/homepage">Home</a></li>
 		<li>
 			<a href="#">Inventory</a>

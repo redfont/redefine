@@ -22,7 +22,7 @@ Prospect View: <br>
 						<td>Date Updated</td>
 						<td>Updated By</td>
 					</tr>
-					<tr ng-repeat="p in vm.persons" ng-click="vm.showDialog($event,p.personId)" title="Click row to update">
+					<tr ng-repeat="p in vm.persons" ng-dblclick="vm.showDialog($event,p.personId)" title="Click row to update">
 						<td>{{p.lastName}}</td>
 						<td>{{p.middleName}}</td>
 						<td>{{p.firstName}}</td>
