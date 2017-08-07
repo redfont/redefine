@@ -8,7 +8,9 @@
 	
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/js/ng-material/angular-material.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/ng-material-icon.css">
-
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/app-style.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/app-override.css">
+	
 	<script type="text/javascript">
 		
 		var context = '<%=request.getContextPath()%>';
@@ -47,4 +49,5 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/user.controller.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/category.controller.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/contactType.controller.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/prospect.controller.js"></script>
 </html>

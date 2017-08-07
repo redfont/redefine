@@ -1,0 +1,18 @@
+.button-override {
+	line-height: 25px !important;
+	min-height: 25px !important;
+	min-width:80px !important;
+	font-weight: 800 !important;
+	font-size: 12px !important;
+}
+
+.p-date-picker>button.md-datepicker-button {
+	margin: 0 0 0 -10px !important;
+	min-height: 26px !important;
+	height: 26px !important;
+	padding: 0 !important;
+}
+
+.p-date-picker>div{
+	min-width:130px !important;
+}

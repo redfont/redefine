@@ -299,3 +299,12 @@ CHANGE COLUMN `person_id` `person_id` INT(11) NOT NULL ;
 ALTER TABLE `redfin`.`purchases` 
 ADD COLUMN `person_id` INT NULL DEFAULT NULL AFTER `purchase_id`;
 
+-- 08-07-2017
+ALTER TABLE `redfin`.`persons` 
+ADD COLUMN `province` VARCHAR(100) NULL AFTER `city_or_municipality`;
+
+ALTER TABLE `redfin`.`persons` 
+CHANGE COLUMN `person_id` `person_id` INT(11) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `redfin`.`persons` 
+CHANGE COLUMN `date_created` `date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;

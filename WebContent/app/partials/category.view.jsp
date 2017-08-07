@@ -3,7 +3,7 @@ Category View: <br>
 	<div style="display: table">
 		<div style="display: table-row;">
 			<div style="display: table-cell;text-align: right;">
-				<md-button class="md-button md-raised md-primary" ng-click="vm.showDialog($event, 0)">add new</md-button>
+				<md-button class="md-button md-raised md-primary button-override" ng-click="vm.showDialog($event, 0)">add new</md-button>
 			</div>			
 		</div>
 		<div style="display: table-row;">
@@ -26,9 +26,9 @@ Category View: <br>
 						<td>{{c.code}}</td>
 						<td>{{c.description}}</td>
 						<td>{{c.createdBy}}</td>
-						<td>{{c.dateCreated}}</td>
+						<td>{{c.dateCreated | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
 						<td>{{c.updatedBy}}</td>
-						<td>{{c.dateUpdated}}</td>
+						<td>{{c.dateUpdated | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
 					</tr>
 				</table>
 			</div>

@@ -1,3 +1,3 @@
-<div style="height: 80px;background-color: #6D7993;">
+<div style="height: 80px;">
 	@ HEADER
 </div>

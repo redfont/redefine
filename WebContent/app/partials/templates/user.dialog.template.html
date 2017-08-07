@@ -23,19 +23,21 @@
 					<tr>
 						<td>Username:</td>
 						<td><input type="text" ng-model="user.username" ng-readOnly="readOnly"/></td>
-						<td>Email:</td>
-						<td><input type="text" ng-model="user.email"/></td>
 					</tr>
 					<tr>
 						<td>Password:</td>
 						<td><input type="password" ng-model="user.password"/></td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input type="text" ng-model="user.email"/></td>
 					</tr>
 				</table>
 			</div>
 		</md-dialog-content>
 		
 		<md-dialog-actions layout="row">
-			<md-button class="md-button md-raised md-primary" ng-click="submit()">Submit</md-button>
+			<md-button class="md-button md-raised md-primary button-override" ng-click="submit()">Submit</md-button>
 		</md-dialog-actions>
 	</form>
 </md-dialog>

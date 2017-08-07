@@ -53,6 +53,9 @@ public class Person implements Serializable {
 	@Column(name="city_or_municipality")
 	private String cityOrMunicipality;
 	
+	@Column(name="province")
+	private String province;
+	
 	@Column(name="postal_code")
 	private String postalCode;
 	
@@ -65,11 +68,11 @@ public class Person implements Serializable {
 	@Column(name="is_customer")
 	private Boolean isCustomer;
 	
-	@Column(name="date_created")
+	@Column(name="date_created", insertable=false, updatable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
 	
-	@Column(name="date_updated")
+	@Column(name="date_updated", insertable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateUpdated;
 	
@@ -159,6 +162,14 @@ public class Person implements Serializable {
 
 	public void setCityOrMunicipality(String cityOrMunicipality) {
 		this.cityOrMunicipality = cityOrMunicipality;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
 	}
 
 	public String getPostalCode() {

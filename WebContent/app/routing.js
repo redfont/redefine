@@ -23,6 +23,10 @@
 			.when('/category', {
 				controller	: 'CategoryController as vm',
 				templateUrl : 'app/partials/category.view.jsp'
+			})
+			.when('/prospect', {
+				controller: 'ProspectController as vm',
+				templateUrl: 'app/partials/person.view.jsp'
 			});
 		/*$routeProvider
 			.when('/userpage', {

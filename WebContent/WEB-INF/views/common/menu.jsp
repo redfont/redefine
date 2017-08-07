@@ -1,4 +1,10 @@
-<div> This is the menu
+<div> This is the menu<br>
+<a href="#/home">Home</a>
+<a href="#/user">User</a>
+<a href="#/contactType">Contact Type</a>
+<a href="#/category">Category</a>
+<a href="#/prospect">Prospect</a>
+<a href="#/controlAcct">Control Account</a>
 <!-- <div class="menu" ng-controller="MenuController">
 	<ul>
 		<li><a href="#/homepage">Home</a></li>

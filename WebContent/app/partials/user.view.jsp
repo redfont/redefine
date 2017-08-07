@@ -3,7 +3,7 @@ User View: <br>
 	<div style="display: table">
 		<div style="display: table-row;">
 			<div style="display: table-cell;text-align: right;">
-				<md-button class="md-button md-raised md-primary" ng-click="vm.showDialog($event, 0)">add new</md-button>
+				<md-button class="md-button md-raised md-primary button-override" ng-click="vm.showDialog($event, 0)">add new</md-button>
 			</div>			
 		</div>
 		<div style="display: table-row;">
@@ -26,9 +26,9 @@ User View: <br>
 						<td>{{u.username}}</td>
 						<td>{{u.email}}</td>
 						<td>{{u.createdBy}}</td>
-						<td>{{u.dateCreated}}</td>
+						<td>{{u.dateCreated | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
 						<td>{{u.updatedBy}}</td>
-						<td>{{u.dateUpdated}}</td>
+						<td>{{u.dateUpdated | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
 					</tr>
 				</table>
 			</div>
