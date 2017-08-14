@@ -5,7 +5,6 @@
 	function UserController($location, $scope, $http, $mdDialog) {
 		var vm = this;
 		var userId = 0;
-		var update = false;
 		
 		vm.showDialog = showDialog;
 		
@@ -32,12 +31,6 @@
 		
 		function showDialog(ev, id) {
 			userId = id;
-            if(userId > 0) {
-                update = true;
-            } else {
-                update = false;
-            }
-			
 			$mdDialog.show({
 				templateUrl			: 'app/partials/templates/user.dialog.template.html',
 				controller			: Dialog,
@@ -58,14 +51,29 @@
 		function Dialog($scope, $http, $mdDialog){
 			$scope.user = {};
 			console.log('dialog');
-			$scope.readOnly = update;
+			$scope.viewOnly = false;
 			
 			$scope.hide = function () {
 				console.log('hide dialog');
 				$mdDialog.hide();
 			}
 			
-			if (update) {
+			$scope.checkAction = function(value){
+				console.log(value.action);
+				if(value.action == "upd") {
+					$scope.viewOnly = false;
+				} else {
+					$scope.viewOnly = true;
+				}
+			}
+			
+			$scope.hovered = function(){
+				console.log('hovered!');
+			}
+			
+			if (userId > 0) {
+				$scope.viewOnly = true;
+				console.log(userId);
                 $http({
                    method:'GET', 
                    url: context + '/main/user/single/' + userId,
@@ -83,7 +91,7 @@
 			$scope.submit = function(){
                 $http({
                     method:'POST',
-                    url: context + ((update) ? '/main/user/update' : '/main/user/add'),
+                    url: context + ((userId > 0) ? '/main/user/update' : '/main/user/add'),
                     data : $scope.user,
                     headers : {
                     	'Content-Type':'application/json'

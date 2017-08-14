@@ -4,9 +4,9 @@
 	}
 	.md-toolbar-tools {
 		height: 40px !important;
-	}
+	} 
 </style>
-<md-dialog aria-label="user">
+<md-dialog aria-label="user" style="width:285px;">
 	<form ng-cloak>
 		<md-toolbar>
 	      <div class="md-toolbar-tools">
@@ -20,17 +20,32 @@
 		<md-dialog-content >
 			<div class="md-dialog-content">
 				<table>
+					<tr ng-show="user.userId > 0">
+						<td colspan="4" style="padding:0px 0px 20px 0px;">
+							<input type="radio" name="action" value="upd" ng-model="action" ng-click="checkAction(this)" style="margin-left:-1px;">Edit
+							<input type="radio" name="action" value="del" ng-model="action" ng-click="checkAction(this)">Delete
+						</td>
+					</tr>
 					<tr>
 						<td>Username:</td>
-						<td><input type="text" ng-model="user.username" ng-readOnly="readOnly"/></td>
+						<td>
+							<input type="text" ng-model="user.username" ng-show="!viewOnly"/>
+							<span ng-show="viewOnly">{{user.username}}</span>
+						</td>
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<td><input type="password" ng-model="user.password"/></td>
+						<td>
+							<input type="password" ng-model="user.password" ng-show="!viewOnly"/>
+							<span ng-show="viewOnly">{{user.password}}</span>
+						</td>
 					</tr>
 					<tr>
 						<td>Email:</td>
-						<td><input type="text" ng-model="user.email"/></td>
+						<td>
+							<input type="text" ng-model="user.email" ng-show="!viewOnly"/>
+							<span ng-show="viewOnly">{{user.email}}</span>
+						</td>
 					</tr>
 				</table>
 			</div>

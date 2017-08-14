@@ -8,9 +8,8 @@ User View: <br>
 		</div>
 		<div style="display: table-row;">
 			<div style="display: table-cell">
-				<table>
+				<table class="data-tbl">
 					<tr>
-						<td>Action</td>
 						<td>Username</td>
 						<td>Email</td>
 						<td>Created By</td>
@@ -18,11 +17,10 @@ User View: <br>
 						<td>Updated By</td>
 						<td>Date Updated</td>
 					</tr>
-					<tr ng-repeat="u in vm.users">
-						<td>
-							<a href="" ng-click="vm.showDialog($event, u.userId)">Edit</a>
-							<a href="">Delete</a>
-						</td>
+					<tr ng-repeat="u in vm.users" 
+						ng-dblclick="vm.showDialog($event, u.userId)" 
+						title="Double click to view details..." 
+						id="repeat-data">
 						<td>{{u.username}}</td>
 						<td>{{u.email}}</td>
 						<td>{{u.createdBy}}</td>
