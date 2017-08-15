@@ -10,7 +10,6 @@ Category View: <br>
 			<div style="display: table-cell">
 				<table>
 					<tr>
-						<td>Action</td>
 						<td>Code</td>
 						<td>Description</td>
 						<td>Created By</td>
@@ -18,11 +17,7 @@ Category View: <br>
 						<td>Updated By</td>
 						<td>Date Updated</td>
 					</tr>
-					<tr ng-repeat="c in vm.categories">
-						<td>
-							<a href="" ng-click="vm.showDialog($event, c.code)">Edit</a>
-							<a href="">Delete</a>
-						</td>
+					<tr ng-repeat="c in vm.categories" ng-dblclick="vm.showDialog($event, c.code)" title="Double click to see details...">
 						<td>{{c.code}}</td>
 						<td>{{c.description}}</td>
 						<td>{{c.createdBy}}</td>

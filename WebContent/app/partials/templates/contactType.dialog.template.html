@@ -6,11 +6,11 @@
 		height: 40px !important;
 	}
 </style>
-<md-dialog aria-label="contactType">
+<md-dialog aria-label="contactType" style="width:310px;">
 	<form ng-cloak>
 		<md-toolbar>
 	      <div class="md-toolbar-tools">
-	        <h2>User</h2>
+	        <h2>Contact Type</h2>
 	        <span flex></span>
 	        <md-button class="md-icon-button" ng-click="hide()">
 	          <md-icon>close</md-icon>
@@ -20,13 +20,20 @@
 		<md-dialog-content >
 			<div class="md-dialog-content">
 				<table>
+					<tr ng-show="contactType.code != 0">
+						<td colspan="4" style="padding:0px 0px 20px 0px;">
+							<input type="radio" name="action" value="upd" ng-model="action" ng-click="checkAction(this)" style="margin-left:-1px;">Edit
+							<input type="radio" name="action" value="del" ng-model="action" ng-click="checkAction(this)">Delete
+						</td>
+					</tr>
 					<tr>
 						<td>Code:</td>
-						<td><input type="text" ng-model="contactType.code"></td>
+						<td>{{contactType.code}}</td>
 					</tr>
 					<tr>
 						<td>Description:</td>
-						<td><input type="text" ng-model="contactType.description"></td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="contactType.description"></td>
+						<td ng-show="viewOnly">{{contactType.description}}</td>
 					</tr>
 				</table>
 			</div>

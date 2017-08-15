@@ -5,7 +5,6 @@
 	function CategoryController($location,$scope,$http,$mdDialog) {
 		var vm = this;
 		var catCode = 0;
-		var update = false;
 		
 		vm.showDialog = showDialog;
 		vm.del = del;
@@ -29,13 +28,7 @@
 		}
 		
 		function showDialog(ev, code){
-			
 			catCode = code;
-            if(catCode != 0) {
-                update = true;
-            } else {
-                update = false;
-            }
 			
 			$mdDialog.show({
 				templateUrl			: 'app/partials/templates/category.dialog.template.html',
@@ -55,16 +48,24 @@
 		}
 		
 		function Dialog($scope, $http, $mdDialog) {
-			console.log('updated: ' + update);
 			$scope.category = {};
-			$scope.readOnly = update;
+			$scope.viewOnly = false;
 			
 			$scope.hide = function () {
 				console.log('hide dialog');
 				$mdDialog.hide();
 			}
 			
-			if (update) {
+			$scope.checkAction = function(value) {
+				if(value.action == "upd") {
+					$scope.viewOnly = false;
+				} else {
+					$scope.viewOnly = true;
+				}
+			}
+			
+			if (catCode != 0) {
+				$scope.viewOnly = true;
                 $http({
                    method:'GET', 
                    url: context + '/main/category/single/' + catCode,
@@ -81,7 +82,7 @@
 			$scope.submit = function(){
                 $http({
                     method:'POST',
-                    url: context + ((update) ? '/main/category/update' : '/main/category/add'),
+                    url: context + ((catCode != 0) ? '/main/category/update' : '/main/category/add'),
                     data : $scope.category,
                     headers : {
                     	'Content-Type':'application/json'

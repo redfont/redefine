@@ -4,7 +4,6 @@
 	
 	function ContactTypeController($location,$scope,$http,$mdDialog){
 		var vm = this;
-		var update = false;
 		var contactCode = 0;
 		
 		vm.showDialog = showDialog;
@@ -32,12 +31,7 @@
 		
 		function showDialog(ev, code){
 			contactCode = code;
-            if(contactCode != 0) {
-                update = true;
-            } else {
-                update = false;
-            }
-			
+            
 			$mdDialog.show({
 				templateUrl			: 'app/partials/templates/contactType.dialog.template.html',
 				controller			: Dialog,
@@ -59,14 +53,15 @@
 			
 			$scope.contactType = {};
 			console.log('dialog');
-			$scope.readOnly = update;
+			$scope.viewOnly = false;
 			
 			$scope.hide = function () {
 				console.log('hide dialog');
 				$mdDialog.hide();
 			}
 			
-			if (update) {
+			if (contactCode != 0) {
+				$scope.viewOnly = true;
                 $http({
                    method:'GET', 
                    url: context + '/main/contactType/single/' + contactCode,
@@ -82,10 +77,18 @@
                 );
             }
 			
+			$scope.checkAction = function(value) {
+				if(value.action == "upd") {
+					$scope.viewOnly = false;
+				} else {
+					$scope.viewOnly = true;
+				}
+			}
+			
 			$scope.submit = function(){
                 $http({
                     method:'POST',
-                    url: context + ((update) ? '/main/contactType/update' : '/main/contactType/add'),
+                    url: context + ((contactCode != 0) ? '/main/contactType/update' : '/main/contactType/add'),
                     data : $scope.contactType,
                     headers : {
                     	'Content-Type':'application/json'
