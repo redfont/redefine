@@ -11,6 +11,10 @@
 		
 		function init(){
 			console.log('init user ctrl');
+			getProspects();
+		}
+		
+		function getProspects(){
 			$http({
 				url: context + '/main/prospect/list',
 				method : 'GET',
@@ -26,8 +30,9 @@
 					console.log(response);
 				}
 			);
-			
 		}
+		
+		
 		
 		function showDialog(ev, id) {
 			personId = id;
@@ -52,6 +57,7 @@
 			$scope.person = {};
 			$scope.person.isProspect = true;
 			$scope.viewOnly = false;
+			$scope.contactTypes = [];
 			console.log('dialog');			
 			
 			$scope.hide = function () {
@@ -68,9 +74,25 @@
 				}
 			}
 			
+			function getContactTypes(){
+				$http({
+					url:context + '/main/contactType/list',
+					method: 'GET',
+					headers: {
+						'Content-Type':'application/json'
+					}
+				}).then(
+					function success(response){
+						$scope.contactTypes = response.data.data;
+					},function error(response){
+						console.log(response);
+					}
+				);
+			}
 			
 			if (personId > 0) {
                 $scope.viewOnly = true;
+                getContactTypes();
 				$http({
                 	method:'GET',
                 	url: context + '/main/prospect/single/' + personId,
@@ -97,6 +119,11 @@
 						Date.parse($scope.person
 								.birthDate.toDateString()));
 				console.log($scope.person.birthDate);
+				
+				if($scope.person.contactType != null) {
+					$scope.person.isProspect = false;
+				}
+				
 				$http({
                 	url:context + ((personId > 0) ? '/main/prospect/update' : '/main/prospect/add'),
                 	method:'POST',

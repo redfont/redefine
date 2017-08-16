@@ -317,3 +317,12 @@ ADD COLUMN `updated_by` VARCHAR(50) NULL DEFAULT NULL AFTER `created_by`;
 
 create trigger control_account_update before update on `control_accounts`
 for each row set NEW.date_updated = CURRENT_TIMESTAMP;
+
+-- 08-16-2017
+ALTER TABLE `redfin`.`persons` 
+DROP COLUMN `is_customer`,
+DROP COLUMN `is_supplier`,
+ADD COLUMN `contact_type_code` VARCHAR(50) NULL DEFAULT NULL AFTER `is_prospect`;
+
+alter table persons
+add foreign key (`contact_type_code`) references `contact_types`(`code`);

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -62,11 +64,9 @@ public class Person implements Serializable {
 	@Column(name="is_prospect")
 	private Boolean isProspect;
 	
-	@Column(name="is_supplier")
-	private Boolean isSupplier;
-	
-	@Column(name="is_customer")
-	private Boolean isCustomer;
+	@ManyToOne
+	@JoinColumn(name="contact_type_code", referencedColumnName="code")
+	private ContactType contactType;
 	
 	@Column(name="date_created", insertable=false, updatable=false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -188,20 +188,19 @@ public class Person implements Serializable {
 		this.isProspect = isProspect;
 	}
 
-	public Boolean getIsSupplier() {
-		return isSupplier;
+
+	/**
+	 * @return the contactType
+	 */
+	public ContactType getContactType() {
+		return contactType;
 	}
 
-	public void setIsSupplier(Boolean isSupplier) {
-		this.isSupplier = isSupplier;
-	}
-
-	public Boolean getIsCustomer() {
-		return isCustomer;
-	}
-
-	public void setIsCustomer(Boolean isCustomer) {
-		this.isCustomer = isCustomer;
+	/**
+	 * @param contactType the contactType to set
+	 */
+	public void setContactType(ContactType contactType) {
+		this.contactType = contactType;
 	}
 
 	public Date getDateCreated() {
