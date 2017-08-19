@@ -24,8 +24,8 @@
 				controller	: 'CategoryController as vm',
 				templateUrl : 'app/partials/category.view.jsp'
 			})
-			.when('/prospect', {
-				controller: 'ProspectController as vm',
+			.when('/person/:contactType', {
+				controller: 'PersonController as vm',
 				templateUrl: 'app/partials/person.view.jsp'
 			})
 			.when('/controlAcct', {

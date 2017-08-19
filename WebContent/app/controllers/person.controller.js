@@ -1,22 +1,28 @@
 (function(){
 	'use strict';
-	app.controller('ProspectController',['$location','$scope','$http','$mdDialog', ProspectController]);
+	app.controller('PersonController',['$location','$routeParams', '$scope','$http','$mdDialog', PersonController]);
 	
-	function ProspectController($location, $scope, $http, $mdDialog) {
+	function PersonController($location, $routeParams, $scope, $http, $mdDialog) {
 		var vm = this;
 		var personId = 0;
 		var view = false;
 		vm.showDialog = showDialog;
+		vm.isProspect = false;
 		init();
 		
+		console.log($routeParams.contactType);
 		function init(){
-			console.log('init user ctrl');
-			getProspects();
+			vm.isProspect = ($routeParams.contactType == 'P');
+			console.log(vm.isProspect);
+			console.log('init person ctrl');
+			getPersons();
+			
+			
 		}
 		
-		function getProspects(){
+		function getPersons(){
 			$http({
-				url: context + '/main/person/list',
+				url: context + '/main/person/list/' + $routeParams.contactType,
 				method : 'GET',
 				headers:{
 					'Content-Type':'application/json'
@@ -31,8 +37,6 @@
 				}
 			);
 		}
-		
-		
 		
 		function showDialog(ev, id) {
 			personId = id;
@@ -55,10 +59,11 @@
 		
 		function Dialog($scope, $http, $mdDialog){
 			$scope.person = {};
-			$scope.person.isProspect = true;
 			$scope.viewOnly = false;
 			$scope.contactTypes = [];
 			console.log('dialog');			
+			
+			getContactTypes();
 			
 			$scope.hide = function () {
 				console.log('hide dialog');
@@ -92,7 +97,6 @@
 			
 			if (personId > 0) {
                 $scope.viewOnly = true;
-                getContactTypes();
 				$http({
                 	method:'GET',
                 	url: context + '/main/person/single/' + personId,
@@ -105,12 +109,28 @@
                 		$scope.person = response.data.dataObject;
                 		var b_date = new Date($scope.person.birthDate);
                 		$scope.person.birthDate = b_date;
-                		//console.log($scope.person);
                 	},
                 	function error(response){
                 		console.log(response);
                 	}
                 );
+            } else {
+        		$http({
+					url:context + '/main/contactType/single/P',
+					method: 'GET',
+					headers: {
+						'Content-Type':'application/json'
+					}
+				}).then(
+					function success(response){
+						 console.log(response.data.dataObject);
+						 $scope.person.contactType = response.data.dataObject;
+					},function error(response){
+						console.log(response);
+						return null;
+					}
+				);
+            	
             }
 			
 			
@@ -119,10 +139,6 @@
 						Date.parse($scope.person
 								.birthDate.toDateString()));
 				console.log($scope.person.birthDate);
-				
-				if($scope.person.contactType != null) {
-					$scope.person.isProspect = false;
-				}
 				
 				$http({
                 	url:context + ((personId > 0) ? '/main/person/update' : '/main/person/add'),

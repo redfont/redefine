@@ -21,8 +21,8 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public List<Person> getProspects() throws Exception {
-		return prospectDao.getPersons();
+	public List<Person> getPersons(String contactType) throws Exception {
+		return prospectDao.getPersons(contactType);
 	}
 
 	@Override

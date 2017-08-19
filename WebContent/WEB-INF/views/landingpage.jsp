@@ -49,6 +49,6 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/user.controller.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/category.controller.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/contactType.controller.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/prospect.controller.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/person.controller.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/controlAcct.controller.js"></script>
 </html>

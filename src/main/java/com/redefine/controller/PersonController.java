@@ -17,17 +17,17 @@ import com.redefine.service.PersonService;
 public class PersonController {
 
 	@Autowired
-	private PersonService prospectService;
+	private PersonService personService;
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, 
 			produces="application/json",
 			consumes="application/json")
 	@ResponseBody
-	public AppResponse addProspect(@RequestBody Person person) {
+	public AppResponse addPerson(@RequestBody Person person) {
 		
 		AppResponse response = new AppResponse();
 		try{
-			prospectService.addProspect(person);
+			personService.addProspect(person);
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -36,12 +36,12 @@ public class PersonController {
 		return response;
 	}
 	
-	@RequestMapping(value="/list", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/list/{contactType}", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
-	public AppResponse getProspects(){
+	public AppResponse getPersons(@PathVariable("contactType") String contactType){
 		AppResponse response = new AppResponse();
 		try{
-			response.setData(prospectService.getProspects());
+			response.setData(personService.getPersons(contactType));
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class PersonController {
 	
 	@RequestMapping(value="/single/{id}", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
-	public AppResponse getProspect(@PathVariable("id") int id){
+	public AppResponse getPerson(@PathVariable("id") int id){
 		AppResponse response = new AppResponse();
 		try{
-			response.setDataObject(prospectService.getProspect(id));
+			response.setDataObject(personService.getProspect(id));
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -66,10 +66,10 @@ public class PersonController {
 	
 	@RequestMapping(value="/update", method=RequestMethod.POST, produces="application/json")
 	@ResponseBody
-	public AppResponse updateProspect(@RequestBody Person person){
+	public AppResponse updatePerson(@RequestBody Person person){
 		AppResponse response = new AppResponse();
 		try{
-			prospectService.updateProspect(person);
+			personService.updateProspect(person);
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e){
 			e.printStackTrace();

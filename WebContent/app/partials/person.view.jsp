@@ -1,7 +1,7 @@
 <div>
 Prospect View: <br>
 	<div style="display: table">
-		<div style="display: table-row;">
+		<div style="display: table-row;" ng-show="vm.isProspect">
 			<div style="display: table-cell;text-align: right;">
 				<md-button class="md-button md-raised md-primary button-override" ng-click="vm.showDialog($event, 0)">add new</md-button>
 			</div>			

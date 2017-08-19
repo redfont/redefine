@@ -26,9 +26,10 @@ public class PersonDaoImpl implements PersonDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Person> getPersons() throws Exception {
-		Query query = em.createQuery("select p from Person p where p.isProspect = :PROSPECT", Person.class);
-		query.setParameter("PROSPECT", Boolean.TRUE);
+	public List<Person> getPersons(String contactType) throws Exception {
+		String pQuery = "select p from Person p where p.contactType.code = :CONTACT_TYPE";
+		Query query = em.createQuery(pQuery, Person.class);
+		query.setParameter("CONTACT_TYPE", contactType);
 		return query.getResultList();
 	}
 

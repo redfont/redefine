@@ -3,7 +3,9 @@
 <a href="#/user">User</a>
 <a href="#/contactType">Contact Type</a>
 <a href="#/category">Category</a>
-<a href="#/prospect">Prospect</a>
+<a href="#/person/P">Prospect</a>
+<a href="#/person/C">Customer</a>
+<a href="#/person/S">Supplier</a>
 <a href="#/controlAcct">Control Account</a>
 <!-- <div class="menu" ng-controller="MenuController">
 	<ul	

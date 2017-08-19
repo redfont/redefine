@@ -60,10 +60,7 @@ public class Person implements Serializable {
 	
 	@Column(name="postal_code")
 	private String postalCode;
-	
-	@Column(name="is_prospect")
-	private Boolean isProspect;
-	
+
 	@ManyToOne
 	@JoinColumn(name="contact_type_code", referencedColumnName="code")
 	private ContactType contactType;
@@ -179,15 +176,6 @@ public class Person implements Serializable {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-
-	public Boolean getIsProspect() {
-		return isProspect;
-	}
-
-	public void setIsProspect(Boolean isProspect) {
-		this.isProspect = isProspect;
-	}
-
 
 	/**
 	 * @return the contactType
