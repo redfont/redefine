@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.redefine.dao.PersonDao;
 import com.redefine.model.Person;
-import com.redefine.service.ProspectService;
+import com.redefine.service.PersonService;
 
 @Service
-public class ProspectServiceImpl implements ProspectService {
+public class PersonServiceImpl implements PersonService {
 
 	@Autowired
 	private PersonDao prospectDao;

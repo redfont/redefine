@@ -16,7 +16,7 @@
 		
 		function getProspects(){
 			$http({
-				url: context + '/main/prospect/list',
+				url: context + '/main/person/list',
 				method : 'GET',
 				headers:{
 					'Content-Type':'application/json'
@@ -95,7 +95,7 @@
                 getContactTypes();
 				$http({
                 	method:'GET',
-                	url: context + '/main/prospect/single/' + personId,
+                	url: context + '/main/person/single/' + personId,
                 	headers:{
                 		'Content-Type':'application/json'
                 	}
@@ -125,7 +125,7 @@
 				}
 				
 				$http({
-                	url:context + ((personId > 0) ? '/main/prospect/update' : '/main/prospect/add'),
+                	url:context + ((personId > 0) ? '/main/person/update' : '/main/person/add'),
                 	method:'POST',
                 	headers:{
                 		'Content-Type':'application/json'

@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.redefine.model.Person;
 import com.redefine.response.AppResponse;
-import com.redefine.service.ProspectService;
+import com.redefine.service.PersonService;
 
 @Controller
-@RequestMapping(value="prospect")
-public class ProspectController {
+@RequestMapping(value="person")
+public class PersonController {
 
 	@Autowired
-	private ProspectService prospectService;
+	private PersonService prospectService;
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, 
 			produces="application/json",

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.redefine.model.Person;
 
-public interface ProspectService {
+public interface PersonService {
 
 	public void addProspect(Person person) throws Exception;
 	public List<Person> getProspects() throws Exception;
