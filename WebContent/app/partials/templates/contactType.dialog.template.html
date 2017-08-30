@@ -6,7 +6,7 @@
 		height: 40px !important;
 	}
 </style>
-<md-dialog aria-label="contactType" style="width:310px;">
+<md-dialog aria-label="contactType" style="width:320px;">
 	<form ng-cloak>
 		<md-toolbar>
 	      <div class="md-toolbar-tools">
@@ -28,7 +28,8 @@
 					</tr>
 					<tr>
 						<td>Code:</td>
-						<td>{{contactType.code}}</td>
+						<td ng-show="!viewOnly"><input type="text" ng-model="contactType.code"></td>
+						<td ng-show="viewOnly">{{contactType.code}}</td>
 					</tr>
 					<tr>
 						<td>Description:</td>
