@@ -31,6 +31,10 @@
 			.when('/controlAcct', {
 				controller : 'ControlAcctController as vm',
 				templateUrl: 'app/partials/controlAcct.view.jsp'
+			})
+			.when('/purchase',{
+				controller : 'PurchaseController as vm',
+				templateUrl: 'app/partials/purchase.view.jsp'
 			});
 		/*$routeProvider
 			.when('/userpage', {

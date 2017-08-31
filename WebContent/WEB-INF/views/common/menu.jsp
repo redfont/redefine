@@ -7,6 +7,7 @@
 <a href="#/person/C">Customer</a>
 <a href="#/person/S">Supplier</a>
 <a href="#/controlAcct">Control Account</a>
+<a href="#/purchase">Purchase</a>
 <!-- <div class="menu" ng-controller="MenuController">
 	<ul	
 		<li><a href="#/homepage">Home</a></li>

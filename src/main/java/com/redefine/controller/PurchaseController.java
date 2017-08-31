@@ -41,6 +41,7 @@ public class PurchaseController {
 			response.setData(purchaseService.getPurchases());
 			response.setIsSuccess(Boolean.TRUE);
 		}catch(Exception e) {
+			e.printStackTrace();
 			response.getMessages().add(e.getMessage());
 		}
 		return response;

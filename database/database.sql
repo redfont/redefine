@@ -326,3 +326,7 @@ ADD COLUMN `contact_type_code` VARCHAR(50) NULL DEFAULT NULL AFTER `is_prospect`
 
 alter table persons
 add foreign key (`contact_type_code`) references `contact_types`(`code`);
+
+-- 08-30-2019
+ALTER TABLE `redfin`.`purchases` 
+ADD COLUMN `purchase_date` DATE NULL AFTER `purchase_id`;

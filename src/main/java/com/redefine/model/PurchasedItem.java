@@ -39,6 +39,7 @@ public class PurchasedItem implements Serializable {
 	private Item item;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="purchase_id")
 	@JsonBackReference
 	private Purchase purchase;
 	

@@ -51,4 +51,5 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/contactType.controller.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/person.controller.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/controlAcct.controller.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/app/controllers/purchase.controller.js"></script>
 </html>

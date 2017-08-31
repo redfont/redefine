@@ -6,8 +6,11 @@
 		var vm = this;
 		var personId = 0;
 		var view = false;
+		var contType = '';
+		
 		vm.showDialog = showDialog;
 		vm.isProspect = false;
+		
 		init();
 		
 		console.log($routeParams.contactType);
@@ -17,7 +20,16 @@
 			console.log('init person ctrl');
 			getPersons();
 			
-			
+			switch($routeParams.contactType) {
+				case 'C' :
+					contType = 'Customer';
+					break;
+				case 'S' :
+					contType = 'Supplier'
+					break;
+				default :
+					contType = 'Prospect';
+			}
 		}
 		
 		function getPersons(){
@@ -61,6 +73,7 @@
 			$scope.person = {};
 			$scope.viewOnly = false;
 			$scope.contactTypes = [];
+			$scope.personPopupTitle = contType;
 			console.log('dialog');			
 			
 			getContactTypes();
